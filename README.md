@@ -63,7 +63,7 @@ Start the script with python3 and "requests" module installed:
 | __`--sma_ip=<IP>`__ | IP of SMA Inverter, __Mandatory parameter__! |
 | __`--sma_pw=<PW>`__ | PW for User Login in SMA Inverter, __Mandatory parameter__! |
 | *`--nossl=True`* | Connect via HTTP instead of HTTPS, *Optional parameter*. |
-| *`--csv=True`* | Write CSV file instead of output to console, *Optional parameter*. |  
+| *`--csv=True`* | Write output to CSV file "*WebConnectCodes.csv*" instead of output to console, *Optional parameter*. |  
 | *`--live=no`* | Disable query for actual SMA Inverter data, *Optional parameter*. | 
 | *`--onlylive=yes`* | Show only the entries which returned data from SMA Inverter, *Optional parameter*. | 
 | *`--lang=en`* | Language selection, *Optional parameter*. Default = de, for possible values see table "*SMA Supported Languages*" above. | 
