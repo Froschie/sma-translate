@@ -9,21 +9,21 @@ The translation can be done by the `ObjectMetadata_Istl.json` file from the SMA 
 
 ## SMA Supported Languages
 
-| Language | File |
-| --- | --- |
-| English | en-US.json |
-| German | de-DE.json |
-| Czech | cs-CS.json |
-| Greek | el-EL.json |
-| Spanish | es-ES.json |
-| French | fr-FR.json |
-| Italian | it-IT.json |
-| Japanese | ja-JP.json |
-| Korean | ko-KR.json |
-| Dutch | nl-NL.json |
-| Polish | pl-PL.json |
-| Portuguese | pt-PT.json |
-| Thai | th-TH.json |
+| Language | File | Code |
+| --- | --- | --- | 
+| English | en-US.json | en |
+| German | de-DE.json | de |
+| Czech | cs-CS.json | cs |
+| Greek | el-EL.json | el |
+| Spanish | es-ES.json | es |
+| French | fr-FR.json | fr |
+| Italian | it-IT.json | it |
+| Japanese | ja-JP.json | ja |
+| Korean | ko-KR.json | ko |
+| Dutch | nl-NL.json | nl |
+| Polish | pl-PL.json | pl |
+| Portuguese | pt-PT.json | pt |
+| Thai | th-TH.json | th |
 
 *Note: actual support might be different based on SMA Inverter Model and Firmware version!*
 
@@ -50,6 +50,23 @@ Each code contains certain valued. The TagId, TagIdEvtMsg and TagHier fields can
 "3409":"Active power reserve"}
 ```
 *Note: only values used in above ObjectMetadata Example.*
+
+
+## Script Execution
+
+Start the script with python3 and "requests" module installed:
+
+`python WebConnectCodes.py <options>`
+
+| Script Option | Description |
+| --- | --- |
+| __`--sma_ip=<IP>`__ | IP of SMA Inverter, __Mandatory parameter__! |
+| __`--sma_pw=<PW>`__ | PW for User Login in SMA Inverter, __Mandatory parameter__! |
+| *`--nossl=True`* | Connect via HTTP instead of HTTPS, *Optional parameter*. |
+| *`--csv=True`* | Write CSV file instead of output to console, *Optional parameter*. |  
+| *`--live=no`* | Disable query for actual SMA Inverter data, *Optional parameter*. | 
+| *`--onlylive=yes`* | Show only the entries which returned data from SMA Inverter, *Optional parameter*. | 
+| *`--lang=en`* | Language selection, *Optional parameter*. Default = de, for possible values see table "*SMA Supported Languages*" above. | 
 
 
 ## SMC WebConnect Code Example
