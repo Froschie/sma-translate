@@ -27,6 +27,30 @@ The translation can be done by the `ObjectMetadata_Istl.json` file from the SMA 
 
 *Note: actual support might be different based on SMA Inverter Model and Firmware version!*
 
+## ObjectMetadata_Istl.json File Example
+
+```json
+{"6100_00416C00":{"Prio":2,"TagId":350,"TagIdEvtMsg":11549,"Unit":13,"DataFrmt":7,"Scale":1.0,"Typ":0,"WriteLevel":5,"TagHier":[830,267],"Min":true,"Max":true,"Avg":true,"Cnt":true,"MinD":true,"MaxD":true},
+"6180_08419000":{"Prio":2,"TagId":814,"TagIdEvtMsg":10003,"DataFrmt":18,"Typ":1,"WriteLevel":5,"TagHier":[830,309,3409]}}
+```
+*Note: only first 2x items listed.*
+
+Each code contains certain valued. The TagId, TagIdEvtMsg and TagHier fields can be translated from language file.
+
+
+## ObjectMetadata_Istl.json File Example
+```json
+{"350":"Waiting time until feed-in",
+"11549":"Waiting time until feed-in",
+"830":"Status",
+"267":"Inverter",
+"814":"MPP search status",
+"10003":"MPP scan procedure completed successfully",
+"309":"Operation",
+"3409":"Active power reserve"}
+```
+*Note: only values used in above ObjectMetadata Example.*
+
 
 ## SMC WebConnect Code Example
 
