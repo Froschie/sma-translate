@@ -92,7 +92,7 @@ ID             TagId                                          Query Value       
 
 
 
-Minimal command options with english language:
+Show entries in English:
 
 `python WebConnectCodes.py --sma_ip=<IP> --sma_pw=<PW> --lang=en`
 ```
@@ -108,8 +108,21 @@ ID             TagId                                          Query Value       
 ```
 
 
+Only the entries with actual data from SMA Inverter in English:
 
-Export all data to CSV file:
+`python WebConnectCodes.py --sma_ip=<IP> --sma_pw=<PW> --lang=en --onlylive=yes`
+```
+ID             TagId                                          Query Value                                    Query Result
+-------------  ---------------------------------------------  ---------------------------------------------  ------------------------------
+6180_08414B00  Fault correction measure                       none                                           [{'val': [{'tag': 885}]}]
+6100_00418000  Event number manufacturer                      None                                           [{'val': None}]
+6180_08414900  Message                                        none                                           [{'val': [{'tag': 886}]}]
+6180_08414A00  Recommended action                             none                                           [{'val': [{'tag': 887}]}]
+6100_00412000  Fault                                          0                                              [{'val': 0}]
+```
+
+
+Export all data to CSV file in English:
 
 `python WebConnectCodes.py --sma_ip=<IP> --sma_pw=<PW> --lang=en --csv=True`
 ```csv
