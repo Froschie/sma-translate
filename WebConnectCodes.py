@@ -32,11 +32,13 @@ else:
 # Download of Language File
 url = base_url + "/data/l10n/" + lang_file
 response = requests.request("GET", url, verify=False)
+response.encoding = 'UTF-8'
 descriptions = response.json()
 
 # Download if Object / Code List
 url = base_url + "/data/ObjectMetadata_Istl.json"
 response = requests.request("GET", url, verify=False)
+response.encoding = 'UTF-8'
 objects = response.json()
 
 # Tab Print Function
@@ -165,6 +167,7 @@ if args.live == "yes":
     url = base_url + "/dyn/getValues.json?sid=" + sid
     payload = "{\"destDev\":[],\"keys\":[" + keys + "]})"
     response = requests.request("POST", url, data = payload, verify=False)
+    response.encoding = 'UTF-8'
     if "result" in response.json():
         for id in response.json()['result']:
             sma_id = id
