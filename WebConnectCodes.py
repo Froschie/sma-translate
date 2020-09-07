@@ -32,13 +32,11 @@ else:
 # Download of Language File
 url = base_url + "/data/l10n/" + lang_file
 response = requests.request("GET", url, verify=False)
-response.encoding = 'UTF-8'
 descriptions = response.json()
 
 # Download if Object / Code List
 url = base_url + "/data/ObjectMetadata_Istl.json"
 response = requests.request("GET", url, verify=False)
-response.encoding = 'UTF-8'
 objects = response.json()
 
 # Tab Print Function
@@ -82,8 +80,12 @@ def translate(id):
         text = ""
         for no in id:
             text = text + " " + translate(no)
+        if not isinstance(text, str):
+            text = text.encode('utf-8')
         return text.strip()
     if str(id) in descriptions:
+        if not isinstance(descriptions[str(id)], str):
+            descriptions[str(id)] = descriptions[str(id)].encode('utf-8')
         return descriptions[str(id)]
     else:
         return "-----"
@@ -167,7 +169,6 @@ if args.live == "yes":
     url = base_url + "/dyn/getValues.json?sid=" + sid
     payload = "{\"destDev\":[],\"keys\":[" + keys + "]})"
     response = requests.request("POST", url, data = payload, verify=False)
-    response.encoding = 'UTF-8'
     if "result" in response.json():
         for id in response.json()['result']:
             sma_id = id
@@ -210,6 +211,13 @@ for item in objects:
                                     query_value = str(live_data[str(item)][str(no)][0]['val'])
                                     query_result = str(live_data[str(item)][str(no)])
                                 else:
+                                    try:
+                                        if isinstance(live_data[str(item)][str(no)][0]['val'], long):
+                                            live_data[str(item)][str(no)][0]['val'] = str(live_data[str(item)][str(no)][0]['val'])
+                                        elif not isinstance(live_data[str(item)][str(no)][0]['val'], str):
+                                            live_data[str(item)][str(no)][0]['val'] = live_data[str(item)][str(no)][0]['val'].encode('utf-8')
+                                    except:
+                                        pass
                                     if len(live_data[str(item)][str(no)][0]['val']) == 1:
                                         if "tag" in live_data[str(item)][str(no)][0]['val'][0]:
                                             query_value = translate(live_data[str(item)][str(no)][0]['val'][0]['tag'])
