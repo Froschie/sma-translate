@@ -1,13 +1,14 @@
-# sma-translate
-Script to query all possible codes from SMA Inverter WebConnect Interface and translate them into readable description with actual values.
+# sma-translate ![Docker Hub Image](https://github.com/Froschie/sma-translate/workflows/Docker%20Image%20CI/badge.svg)
 
-SMA Inverter uses codes to query informations via JSON WebConnect Interface.
-They are not publically documented.
-However the SMA Inverter WebGUI itself is providing a dictionary for translating the different codes to a name with additional informations like unit.
+Script to query all possible codes from SMA Inverter WebConnect Interface and translate them into readable description with actual values.  
 
-The translation can be done by the `ObjectMetadata_Istl.json` file from the SMA Inverter WebGUI and a language specific translation file provided by the SMA Inverter WebGUI.
+SMA Inverter uses codes to query informations via JSON WebConnect Interface.  
+They seem not to be publically documented.  
+Luckily the SMA Inverter WebGUI itself is providing a dictionary for translating the different codes to a name with additional informations like unit.  
 
-For example the code `6100_40263F00` describes the current power generated.
+The translation can be done by the `ObjectMetadata_Istl.json` file from the SMA Inverter WebGUI and a language specific translation file provided by the SMA Inverter WebGUI.  
+
+For example the code `6100_40263F00` describes the current power generated.  
 
 ## SMA Supported Languages
 
@@ -135,4 +136,22 @@ sep=;
 "6100_40412100";"2";"Ok";"Power of all battery inverters in OK status";"W";"0";"1.0";"0";"5";"Status Operation Battery status";"True";"True";"True";"True";"";"";"True";"True";"";"";"";"";"";"";"";"";
 "6180_08414B00";"2";"Fault correction measure";"Fault correction measure";"";"18";"";"1";"5";"Status Operation Current event";"";"";"";"";"";"";"";"";"";"";"";"";"";"";"none";"[{'val': [{'tag': 885}]}]";
 "6100_00418000";"2";"Event number manufacturer";"Current event number for manufacturer";"";"0";"1.0";"0";"5";"Status Operation Current event";"True";"True";"";"True";"True";"True";"";"";"";"";"";"";"";"";"None";"[{'val': None}]";
+```
+
+
+## Start Docker Container  
+
+Pull latest Image:  
+`docker pull froschie/sma-translate:latest`  
+
+Start Container:  
+```
+docker run -it --rm froschie/sma-translate --sma_ip=192.168.1.4 --sma_pw=pw --live=yes --onlylive=yes
+```
+*Note: please adapt the parameters as needed!*  
+
+To use the CSV export an dummy file needs to be created first to map it into the container:  
+```
+touch WebConnectCodes.csv
+docker run -it --rm -v $(pwd)/WebConnectCodes.csv:WebConnectCodes.csv froschie/sma-translate --sma_ip=192.168.1.4 --sma_pw=pw --live=yes --onlylive=yes --csv=True
 ```
