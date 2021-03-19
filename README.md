@@ -153,5 +153,5 @@ docker run -it --rm froschie/sma-translate --sma_ip=192.168.1.4 --sma_pw=pw --li
 To use the CSV export an dummy file needs to be created first to map it into the container:  
 ```
 touch WebConnectCodes.csv
-docker run -it --rm -v $(pwd)/WebConnectCodes.csv:WebConnectCodes.csv froschie/sma-translate --sma_ip=192.168.1.4 --sma_pw=pw --live=yes --onlylive=yes --csv=True
+docker run -it --rm -v $(pwd)/WebConnectCodes.csv:/WebConnectCodes.csv froschie/sma-translate --sma_ip=192.168.1.4 --sma_pw=pw --live=yes --onlylive=yes --csv=True
 ```
